@@ -27,15 +27,14 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-alias l='ls -Fh'     #size,show type,human readable
-alias la='ls -AFh'   #long list,show almost all,show type,human readable
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
-alias ll='ls -lh'      #long list
-alias ldot='ls -hld .*'
-alias lS='ls -h1FSsh'
-alias lart='ls -h1Fcart'
-alias lrt='ls -h1Fcrt'
+alias ls='lsd'
+alias l='lsd -Fh'     #size,show type,human readable
+alias la='lsd -AFh'   #long list,show almost all,show type,human readable
+alias ll='lsd -lh'      #long list
+alias ldot='lsd -hld .*'
+
+alias cat='bat'
+
 
 alias rm='rm -i'
 alias cp='cp -i'
