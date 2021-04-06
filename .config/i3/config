@@ -75,7 +75,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Toggle split directions
-bindsym $mod+v split toggle
+bindsym $mod+v split toggle; border pixel 1
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -203,13 +203,21 @@ bindsym $mod+0 mode "$mode_system"
 
 
 # Audio
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%; notify-send -i audio-volume-high -t 500 'Volume +'"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%; notify-send -i audio-volume-low -t 500 'Volume -'"
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle; nofify-send -i audio-volume-muted -t 1000 'Mute'"
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 7; notify-send 'brightness up' # increase screen brightness
-bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 7; notify-send 'brightness down'  # decrease screen brightness
+# increase screen brightness
+bindsym XF86MonBrightnessUp exec "sudo xbacklight -inc 7; notify-send 'brightness up'"
+# decrease screen brightness
+bindsym XF86MonBrightnessDown exec "sudo xbacklight -dec 7; notify-send 'brightness down'"
+
+# Media player controls
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioPause exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
 
 # Gaps
 # set gaps
@@ -245,6 +253,7 @@ exec "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz -variant ,qwerty"
 exec_always feh --bg-fill ~/Pictures/background.jpg
 
 # Specific applications settings
+for_window [class="Spotify"] border none
 for_window [class="Alacritty"] border none
 for_window [class="Brave"] border none
 for_window [class="flameshot"] floating enable
