@@ -246,7 +246,7 @@ bindsym Print exec flameshot gui
 # Auto start
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id clipit
-# Keyboard loyout
+# Keyboard layout
 exec "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz -variant ,qwerty"
 
 # Background image
