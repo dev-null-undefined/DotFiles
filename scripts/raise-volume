@@ -1,0 +1,3 @@
+#!/bin/bash
+pactl set-sink-volume @DEFAULT_SINK@ +5%;
+notify-send -i audio-volume-high -t 500 "Volume+ ($(get-volume)%)"

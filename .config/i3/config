@@ -215,8 +215,8 @@ bindsym $mod+0 mode "$mode_system"
 # bindsym $mod+0 exec "clearine"
 
 # Audio
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%; notify-send -i audio-volume-high -t 500 'Volume +'"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%; notify-send -i audio-volume-low -t 500 'Volume -'"
+bindsym XF86AudioRaiseVolume exec "raise-volume"
+bindsym XF86AudioLowerVolume exec "lower-volume"
 bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle; nofify-send -i audio-volume-muted -t 1000 'Mute'"
 
 # Sreen brightness controls
