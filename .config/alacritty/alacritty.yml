@@ -1,9 +1,19 @@
+env:
+  # TERM variable
+  #
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM: xterm-256color
+
 # Font configuration
 font:
   # Normal (roman) font face
   normal:
     # Font family
     family: MesloLGS NF
+    # family: icons\-in\-terminal
 
     style: Regular
 
@@ -32,14 +42,14 @@ font:
     style: Bold Italic
 
   # Point size
-  # size: 8.0
+  size: 12.0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
-  # glyph_offset:
-    # x: -1
-    # y: 0
+  glyph_offset:
+    x: 0
+    y: 0
 draw_bold_text_with_bright_colors: true
 colors:
   name: GJM
@@ -68,3 +78,6 @@ colors:
     magenta: "#be67e1"
     cyan: "#63e7f0"
     white: "#f3f3f3"
+
+key_bindings:
+  - { key: Space,  mods: Control, action: ToggleViMode }
