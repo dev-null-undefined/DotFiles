@@ -18,7 +18,7 @@ interval = 1
 
 [[block]]
 block = "networkmanager"
-on_click = "alacritty -e nmtui"
+on_click = "nm-connection-editor"
 interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
 interface_name_include = []
 ap_format = "{strength} {ssid}"
@@ -40,7 +40,7 @@ format = "%a %d/%m %H:%M:%S"
 
 [[block]]
 block = "battery"
-interval = 10
+interval = 2
 format = "{percentage}"
 device = "BAT1" 
 
