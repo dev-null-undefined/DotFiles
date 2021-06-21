@@ -26,6 +26,9 @@ font pango:monospace 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-blur --nofork
 
+# Touchpad gestures
+exec --no-startup-id "libinput-gestures-setup start"
+
 # Discord auto startup
 exec discord --start-minimized
 
@@ -199,16 +202,14 @@ bar {
 
 
 # System actions shutdown lock etc.
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown, (n) Backlight 0%, (m) Backlight 50%
+set $mode_system System (l) lock, (e) logout, (h) hibernate, (r) reboot, (s) shutdown, (n) Toggle screen
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym n exec --no-startup-id "sudo light -S 0", mode "default"   
-    bindsym m exec --no-startup-id "sudo light -S 75", mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym n exec --no-startup-id "/usr/local/bin/toggle-screen", mode "default"   
+    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -224,9 +225,11 @@ bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle; nofify-se
 
 # Sreen brightness controls
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec "sudo light -T 1.5; notify-send 'brightness up'"
+# bindsym XF86MonBrightnessUp exec "sudo light -T 1.5; notify-send 'brightness up'"
+bindsym Ctrl+Shift+w exec "sudo light -T 1.5; notify-send 'brightness up'"
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec "sudo light -T 0.75; notify-send 'brightness down'"
+# bindsym XF86MonBrightnessDown exec "sudo light -T 0.75; notify-send 'brightness down'"
+bindsym Ctrl+Shift+s exec "sudo light -T 0.75; notify-send 'brightness down'"
 
 # Media player controls
 bindsym XF86AudioPlay exec "playerctl play-pause"
