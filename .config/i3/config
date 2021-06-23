@@ -261,8 +261,8 @@ bindsym Ctrl+Shift+2 exec pcmanfm
 # Print screen flame shot
 bindsym Print exec flameshot gui
 
-# Auto start
-exec --no-startup-id clipit
+# Auto start clipboard manager
+exec --no-startup-id copyq
 # Keyboard layout
 exec_always "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz -variant ,qwerty"
 
@@ -271,6 +271,7 @@ exec_always feh --bg-fill ~/Pictures/background.jpg
 
 # Specific applications settings
 for_window [class="Spotify"] border none
+for_window [class="copyq"] border none floating enable
 for_window [class="Alacritty"] border none
 for_window [class="Brave"] border none
 for_window [class="flameshot"] floating enable
@@ -327,3 +328,6 @@ bindsym $mod+c exec ~/dmscripts/dmconf -fn 'Inconsolata 12'
 
 # Windows + Tab action to cycle
 bindsym $mod+Tab exec --no-startup-id "rofi -show"
+
+# Clipboard manager history
+bindsym $mod+Shift+v exec --no-startup-id "copyq toggle"
