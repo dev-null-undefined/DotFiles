@@ -37,12 +37,14 @@ on_click = "pavucontrol"
 block = "time"
 interval = 1
 format = "%a %d/%m %H:%M:%S"
+on_click = "gnome-calendar"
 
 [[block]]
 block = "battery"
 interval = 2
 format = "{percentage}"
 device = "BAT1" 
+on_click = "gnome-power-statistics"
 
 # [[block]]
 # block = "temperature"
