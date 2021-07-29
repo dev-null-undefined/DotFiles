@@ -17,6 +17,12 @@ interval = 1
 # format = "{1m}"
 
 [[block]]
+block = "bluetooth"
+mac = "14:3F:A6:19:50:D8"
+format = "Sony"
+hide_disconnected = true
+
+[[block]]
 block = "networkmanager"
 on_click = "nm-connection-editor"
 interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+", "virbr\\d+"]
