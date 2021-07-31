@@ -22,7 +22,7 @@ export ZSH="/home/martin/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git zsh-autosuggestions nvm zsh-z zsh-syntax-highlighting mvn sudo docker docker-compose)
+plugins=(git zsh-autosuggestions nvm zsh-z zsh-syntax-highlighting mvn sudo docker docker-compose ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliasrc
