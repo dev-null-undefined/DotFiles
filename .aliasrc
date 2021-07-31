@@ -35,10 +35,12 @@ alias ldot='lsd -hld .*'
 
 alias cat='bat'
 
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+alias mkd='mkdir -pv'
+
 
 n ()
 {
@@ -93,3 +95,10 @@ fuck () {
 }
 
 alias j="z"
+alias f="fuck"
+alias svim="sudoedit"
+
+alias ggit="cd ~/Git && tree -L 2"
+alias ei3="vim ~/.config/i3/config"
+alias eai3statu-rs="vim ~/.config/i3status-rust/config.toml"
+alias ealacritty="vim ~/.config/alacritty/alacritty.yml"
