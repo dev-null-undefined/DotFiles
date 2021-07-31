@@ -356,4 +356,4 @@ exec_always "sudo light -S 50"
 # Urgent window focus
 for_window [urgent="latest"] focus
 
-for_window [class="ml-codeboy-engine-exampleGames-ExampleGames"] floating enable
+#for_window [class="ml-codeboy-engine-exampleGames-ExampleGames"] floating enable
