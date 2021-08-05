@@ -54,33 +54,56 @@ font:
     x: 0
     y: 0
 draw_bold_text_with_bright_colors: true
+#colors:
+#  name: GJM
+#  author: ""
+#  primary:
+#    background: "#1c1c1c"
+#    foreground: "#c5c5c5"
+#  cursor:
+#    text: "#1c1c1c"
+#    cursor: "#c5c5c5"
+#  normal:
+#    black: "#1c1c1c"
+#    red: "#ff005b"
+#    green: "#cee318"
+#    yellow: "#ffe755"
+#    blue: "#048ac7"
+#    magenta: "#833c9f"
+#    cyan: "#0ac1cd"
+#    white: "#e5e5e5"
+#  bright:
+#    black: "#666666"
+#    red: "#ff00a0"
+#    green: "#ccff00"
+#    yellow: "#ff9f00"
+#    blue: "#48c6ff"
+#    magenta: "#be67e1"
+#    cyan: "#63e7f0"
+#    white: "#f3f3f3"
 colors:
-  name: GJM
+  name: Otto
   author: ""
   primary:
-    background: "#1c1c1c"
-    foreground: "#c5c5c5"
-  cursor:
-    text: "#1c1c1c"
-    cursor: "#c5c5c5"
+    background: "#2C3746"
+    foreground: "#FFFFFF"
   normal:
-    black: "#1c1c1c"
-    red: "#ff005b"
-    green: "#cee318"
-    yellow: "#ffe755"
-    blue: "#048ac7"
-    magenta: "#833c9f"
-    cyan: "#0ac1cd"
-    white: "#e5e5e5"
+    black: "#2B2B2B"
+    red: "#ff3762"
+    green: "#2AACAA"
+    yellow: "#FFC46B"
+    blue: "#FF716A"
+    magenta: "#CB75F7"
+    cyan: "#5CC6D1"
+    white: "#9CACAD"
   bright:
-    black: "#666666"
-    red: "#ff00a0"
-    green: "#ccff00"
-    yellow: "#ff9f00"
-    blue: "#48c6ff"
-    magenta: "#be67e1"
-    cyan: "#63e7f0"
-    white: "#f3f3f3"
-
+    black: "#888888"
+    red: "#FD2E59"
+    green: "#2EBDBB"
+    yellow: "#F7C068"
+    blue: "#F77067"
+    magenta: "#B468DC"
+    cyan: "#56B6C2"
+    white: "#4A5F6A"
 key_bindings:
   - { key: Space,  mods: Control, action: ToggleViMode }
