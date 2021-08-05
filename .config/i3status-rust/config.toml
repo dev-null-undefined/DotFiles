@@ -18,6 +18,11 @@ interval = 1
 
 [[block]]
 block = "bluetooth"
+mac = "F8:8F:07:EC:5B:EF"
+format = "Buds"
+
+[[block]]
+block = "bluetooth"
 mac = "14:3F:A6:19:50:D8"
 format = "Sony"
 hide_disconnected = true
