@@ -1,7 +1,7 @@
 [credential]
         helper = store
 [user]
-	name = Martin
+	name = ThreshMain
         email = martinkos007@gmail.com
         signingkey = 50FC414E3D593B12
 [commit]
