@@ -5,7 +5,8 @@
         email = martinkos007@gmail.com
         signingkey = 50FC414E3D593B12
 [commit]
-        gpgsign = true
+    	gpgsign = true
+	verbose = true
 [core]
 	editor = vim
 	pager = delta
