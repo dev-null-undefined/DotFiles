@@ -8,10 +8,10 @@ fi
 
 setopt no_share_history
 
-
+export FZF_BASE="$(fzf-share)"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.cargo/bin/:$PATH
+export PATH=$HOME/.cargo/bin/:/usr/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/martin/.oh-my-zsh"
@@ -22,7 +22,7 @@ export ZSH="/home/martin/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git zsh-autosuggestions nvm zsh-z zsh-syntax-highlighting mvn sudo docker docker-compose ssh-agent zsh-completions common-aliases alias-tips fzf-zsh fzf zsh-completion-generator)
+plugins=(git zsh-autosuggestions nvm zsh-z zsh-syntax-highlighting mvn sudo docker docker-compose ssh-agent zsh-completions common-aliases alias-tips fzf)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliasrc
