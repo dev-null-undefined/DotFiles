@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+find . -type d -exec mkdir ~/{} \;
+find . -type f -exec cp ./{} ~/{} \;
+
