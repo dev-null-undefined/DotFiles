@@ -1,5 +1,7 @@
 syntax on
 
+set backspace=indent,eol,start
+
 set clipboard=unnamedplus
 set number relativenumber
 set encoding=utf-8
