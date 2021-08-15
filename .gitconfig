@@ -3,7 +3,7 @@
 [user]
 	name = ThreshMain
         email = martinkos007@gmail.com
-        signingkey = 50FC414E3D593B12
+        signingkey = 8FD71CC0A54BC1AAC9C67BDA240261DDF79EA418
 [commit]
     	gpgsign = true
 	verbose = true
