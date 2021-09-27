@@ -1,3 +1,3 @@
 #!/bin/bash
 pactl set-sink-volume @DEFAULT_SINK@ -5%;
-notify-send -i audio-volume-low -t 500 "Volume- ($(~/Git/Martin/DotFiles/scripts/get-volume)%)"
+notify-send -i audio-volume-low -t 500 "Volume- ($(~/GitHub/Martin/DotFiles/scripts/get-volume)%)"
