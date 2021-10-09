@@ -1,2 +1,2 @@
 #!/bin/bash
-pacmd list-sinks|grep -A 15 '* index'| awk '/volume: front/{ print $5 }' | sed 's/[%|,]//g'
+amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }'
