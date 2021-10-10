@@ -1,5 +1,23 @@
 alias gen-pass="date +%s | sha256sum | base64 | head -c 32 ; echo"
 
+alias config='git --git-dir=$HOME/GitHub/Martin/DotFiles/.git --work-tree=$HOME'
+alias gpp='g++ --std=c++14 -Wall -pedantic -Wno-long-long -g'
+
+gppa() {
+    g++ --std=c++14 -Wall -pedantic -Wno-long-long -g -o /tmp/a.out "$1"
+    shift 1
+    /tmp/a.out "$@"
+}
+
+vimg() {
+    vim "$1"
+    g++ --std=c++14 -Wall -pedantic -Wno-long-long -g -o /tmp/a.out "$1"
+    shift 1
+    /tmp/a.out "$@"
+}
+
+
+
 alias ssh-key="ssh -i ~/.ssh/OpenSSH_key "
 alias ssh-pie="ssh-key root@10.8.0.2"
 #
