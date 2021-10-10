@@ -1,0 +1,36 @@
+[credential]
+        helper = store
+[commit]
+    	gpgsign = true
+	verbose = true
+[core]
+	editor = vim
+	pager = delta
+	autocrlf = input
+[alias]
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        lgc = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
+        l2 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
+        l1 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        l3 = log -p -1
+
+[includeIf "gitdir:**/GitHub/**/.git"]
+  path = config.github
+
+[includeIf "gitdir:**/GitLab/**/.git"]
+  path = config.gitlab
+
+[includeIf "gitdir:/etc/nixos/.git"]
+  path = config.github
+
+#[interactive]
+#	diffFilter = delta --color-only
+
+#[delta]
+#	features = side-by-side line-numbers decorations
+#	whitespace-error-style = 22 reverse
+
+#[delta "decorations"]
+#	commit-decoration-style = bold yellow box ul
+#	file-style = bold yellow ul
+#	file-decoration-style = none
