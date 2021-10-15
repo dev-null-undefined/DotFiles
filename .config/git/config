@@ -8,11 +8,12 @@
 	pager = delta
 	autocrlf = input
 [alias]
+        l = log --color --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %Cblue%an %C(bold blue)<%ae>%Creset %C(dim cyan)%G?' --abbrev-commit --reverse -n 25
+	la = log --color --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %Cblue%an %C(bold blue)<%ae>%Creset %C(dim cyan)%G?' --abbrev-commit --reverse
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        lgc = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
-        l2 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
-        l1 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        l3 = log -p -1
+        ld= log -p -1
+	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+
 
 [includeIf "gitdir:**/GitHub/**/.git"]
   path = config.github
@@ -34,3 +35,8 @@
 #	commit-decoration-style = bold yellow box ul
 #	file-style = bold yellow ul
 #	file-decoration-style = none
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
