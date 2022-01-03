@@ -5,13 +5,12 @@
 	verbose = true
 [core]
 	editor = vim
-	pager = delta
 	autocrlf = input
 [alias]
-        l = log --color --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %Cblue%an %C(bold blue)<%ae>%Creset %C(dim cyan)%G?' --abbrev-commit --reverse -n 25
+        l = log --color --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %Cblue%an %C(bold blue)<%ae>%Creset %C(dim cyan)%G?' --abbrev-commit --reverse
 	la = log --color --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %Cblue%an %C(bold blue)<%ae>%Creset %C(dim cyan)%G?' --abbrev-commit --reverse
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        ld= log -p -1
+        ld = log -p -1
 	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
 
 
@@ -24,19 +23,10 @@
 [includeIf "gitdir:/etc/nixos/.git"]
   path = config.github
 
-#[interactive]
-#	diffFilter = delta --color-only
-
-#[delta]
-#	features = side-by-side line-numbers decorations
-#	whitespace-error-style = 22 reverse
-
-#[delta "decorations"]
-#	commit-decoration-style = bold yellow box ul
-#	file-style = bold yellow ul
-#	file-decoration-style = none
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[gpg]
+	program = gpg2
