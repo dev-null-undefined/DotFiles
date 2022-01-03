@@ -48,7 +48,7 @@ alias la='lsd -AFh'   #long list,show almost all,show type,human readable
 alias ll='lsd -lh'      #long list
 alias ldot='lsd -hld .*'
 
-alias cat='bat'
+alias cat='bat -p '
 
 alias rm='rm -i'
 alias cp='cp -i'
