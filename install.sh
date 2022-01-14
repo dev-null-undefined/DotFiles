@@ -13,6 +13,6 @@ git clone https://github.com/djui/alias-tips.git ${ZSH_CUSTOM:-$ZSH/custom}/plug
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-# tmux source ~/.tmux.conf
+# only if tmux is already running `tmux source ~/.tmux.conf`
 # tmux
 # prefix + I (capital i)
