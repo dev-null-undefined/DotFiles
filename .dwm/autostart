@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# SHIT NEED TO BE HERE
+copyq &
+pasystray &
+blueman-applet  &
+feh --bg-fill ~/Images/background.* &
+autorandr --change &
+
+emacs --daemon &
+
+(sleep 2 && systemctl --user restart dwm-status.service) &
+
+pactl load-module module-null-sink media.class=Audio/Sink sink_name=my-combined-sink channel_map=stereo
+
+DWM_LOG="/tmp/dwm.log"
+DWM_LOG_OLD="$DWM_LOG.old"
+if [[ -f "$DWM_LOG" ]]; then
+    mv "$DWM_LOG" "$DWM_LOG_OLD"
+fi
+
+DWM_LOG_ERROR="/tmp/dwm_err.log"
+DWM_LOG_ERROR_OLD="$DWM_LOG_ERROR.old"
+if [[ -f "$DWM_LOG_ERROR" ]]; then
+    mv "$DWM_LOG_ERROR" "$DWM_LOG_ERROR_OLD"
+fi
+
+dwm > "$DWM_LOG" 2> "$DWM_LOG_ERROR"
