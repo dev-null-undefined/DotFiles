@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+my_sink_L="my-combined-sink Audio/Sink sink Monitor:monitor_FL"
+my_sink_R="my-combined-sink Audio/Sink sink Monitor:monitor_FR"
+
+g733_R="G733 Gaming Headset Analog Stereo:playback_FR"
+g733_L="G733 Gaming Headset Analog Stereo:playback_FL"
+
+build_in_L="Built-in Audio Analog Stereo:playback_FL"
+build_in_R="Built-in Audio Analog Stereo:playback_FR"
+
+if jack_lsp -c | grep G733; then
+    jack_connect "$my_sink_R" "$g733_R"
+    jack_connect "$my_sink_L" "$g733_L"
+    jack_disconnect "$my_sink_L" "$build_in_L"
+    jack_disconnect "$my_sink_R" "$build_in_R"
+else
+    jack_disconnect "$my_sink_R" "$g733_R"
+    jack_disconnect "$my_sink_L" "$g733_L"
+    jack_connect "$my_sink_L" "$build_in_L"
+    jack_connect "$my_sink_R" "$build_in_R"
+fi
