@@ -30,3 +30,6 @@
 	required = true
 [gpg]
 	program = gpg2
+[user]
+	name = ThreshMain
+	email = martinkos007@gmail.com
