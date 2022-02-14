@@ -10,7 +10,13 @@ emacs --daemon &
 
 (sleep 2 && systemctl --user restart dwm-status.service) &
 
-pactl load-module module-null-sink media.class=Audio/Sink sink_name=my-combined-sink channel_map=stereo
+if jack_lsp -c | grep my-combined-sink; then
+	echo custom sink already created
+else	
+	pactl load-module module-null-sink media.class=Audio/Sink sink_name=my-combined-sink channel_map=stereo
+fi
+
+(sleep 1 && /home/martin/GitHub/Martin/DotFiles/scripts/audio-devices) &
 
 DWM_LOG="/tmp/dwm.log"
 DWM_LOG_OLD="$DWM_LOG.old"
