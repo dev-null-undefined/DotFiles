@@ -9,7 +9,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
 setopt no_share_history
 
 export FZF_BASE="$(fzf-share)"
@@ -28,7 +27,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-autosuggestions nvm zsh-z 
     	 zsh-syntax-highlighting mvn sudo 
-	 docker docker-compose ssh-agent 
+	 docker docker-compose
 	 zsh-completions common-aliases 
 	 alias-tips fzf 
 	 nix-zsh-completions nix-shell
@@ -71,3 +70,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+# Disable error on shell output during start
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# Add key to ssh-agent if not already in
+ssh-add -l | grep cvy7aO9eIJK1oj5dz+2VAfXB51gI8MdritXZh/WsCPs --color="never" || ssh-add
