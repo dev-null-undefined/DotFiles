@@ -26,7 +26,12 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-;;(setq 'doom-font "")
+
+(setq doom-font (font-spec :family "Fira Code" :size 14)
+      doom-unicode-font (font-spec :family "MesloLGS NF" :size 14)
+      doom-variable-pitch-font (font-spec :family "Overpass" :size 18 :weight 'medium)
+      doom-big-font-increment 12)
+
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -40,16 +45,8 @@
 (exec-path-from-shell-copy-env "SSH_AGENT_PID")
 (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
 
-
 ;; VTERM terminal settings
 (global-set-key [f2] 'vterm-toggle-cd)
-
-(set-face-attribute 'fixed-pitch nil :font "MesloLGS NF")
-(add-hook 'vterm-mode-hook
-          (lambda ()
-            (set (make-local-variable 'buffer-face-mode-face) 'fixed-pitch)
-                 (buffer-face-mode t)))
-
 ;; DIRED file manager
 (use-package dired
   :ensure nil
