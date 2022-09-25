@@ -11,6 +11,7 @@
 (package! all-the-icons-dired)
 (package! dired-single)
 (package! dired-open)
+(package! org-bullets)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)

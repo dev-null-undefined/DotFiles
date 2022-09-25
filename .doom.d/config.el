@@ -85,3 +85,15 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Org mode better heading icons
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(flycheck-define-checker proselint
+  "A linter for prose."
+  :command ("proselint" source-inplace)
+  :error-patterns
+  ((warning line-start (file-name) ":" line ":" column ": "
+        (id (one-or-more (not (any " "))))
+        (message) line-end))
+  :modes (text-mode markdown-mode gfm-mode org-mode))
