@@ -5,6 +5,11 @@
 # If using tramp emacs over ssh don't do anything
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
+# Inside emacs vterm fix clear issues
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+    alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+fi
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -14,7 +19,7 @@ setopt no_share_history
 export FZF_BASE="$(fzf-share)"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.cargo/bin/:/usr/bin:$PATH
+export PATH=$PATH:$HOME/.cargo/bin/:/usr/bin:$HOME/GitHub/nix-autobahn
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/martin/.oh-my-zsh"
@@ -29,7 +34,7 @@ plugins=(git zsh-autosuggestions nvm zsh-z
     	 zsh-syntax-highlighting mvn sudo 
 	 docker docker-compose
 	 zsh-completions common-aliases 
-	 alias-tips fzf 
+	 alias-tips fzf zsh-fzf-history-search
 	 nix-zsh-completions nix-shell
      	 emacs)
 
@@ -70,9 +75,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#autoload -Uz compinit; compinit;
+#bindkey "^ " _expand_alias
+#zstyle ':completion:*' completer _expand_alias _complete _ignored
+#zstyle ':completion:*' regular true
 
 # Disable error on shell output during start
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Add key to ssh-agent if not already in
-ssh-add -l | grep cvy7aO9eIJK1oj5dz+2VAfXB51gI8MdritXZh/WsCPs --color="never" || ssh-add
+ssh-add -l | grep cvy7aO9eIJK1oj5dz+2VAfXB51gI8MdritXZh/WsCPs --color="never" &> /dev/null || ssh-add
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
