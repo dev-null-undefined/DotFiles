@@ -3,8 +3,10 @@
 copyq &
 pasystray &
 blueman-applet  &
+flameshot &
 feh --bg-fill ~/Images/background.* &
-autorandr --change &
+
+eval `ssh-agent`
 
 emacs --daemon &
 
@@ -29,5 +31,7 @@ DWM_LOG_ERROR_OLD="$DWM_LOG_ERROR.old"
 if [[ -f "$DWM_LOG_ERROR" ]]; then
     mv "$DWM_LOG_ERROR" "$DWM_LOG_ERROR_OLD"
 fi
+
+autorandr --change
 
 dwm > "$DWM_LOG" 2> "$DWM_LOG_ERROR"
