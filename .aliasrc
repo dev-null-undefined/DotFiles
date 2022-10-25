@@ -11,8 +11,16 @@ alias gpp='g++ --std=c++17 -Wall -pedantic -Wno-long-long -g -fno-omit-frame-poi
 
 alias kill-window='xprop _NET_WM_PID | sed "s/.*=//g" | xargs kill -9'
 
-alias nix-update="pushd /etc/nixos; sudo nix flake lock --update-input nixpkgs --update-input nixpkgs-stable --update-input nixpkgs-jetbrains --update-input nixpkgs-master --update-input nixpkgs-dev-null && sudo nixos-rebuild switch --flake '.#'; popd"
+alias nix-update="pushd /etc/nixos; sudo nix flake lock --update-input nixpkgs --update-input nixpkgs-stable --update-input nixpkgs-jetbrains --update-input nixpkgs-master --update-input nixpkgs-dev-null && sudo nixos-rebuild switch --flake '.#' && git add flake.lock; popd"
 alias nix-rebuild="pushd /etc/nixos; sudo nixos-rebuild switch --flake '.#'; popd"
+
+alias dud='du -d 1 -h'
+alias grep='grep --color'
+alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+
+ngrep() {
+	sgrep "$*" /etc/nixos
+}
 
 gppa() {
     gpp -o /tmp/a.out "$@" || return 1
@@ -56,6 +64,7 @@ ex ()
 alias ls='lsd'
 alias l='lsd -Fh'     #size,show type,human readable
 alias la='lsd -AFh'   #long list,show almost all,show type,human readable
+alias lla='lsd -lAFh'   #long list,show almost all,show type,human readable
 alias ll='lsd -lh'      #long list
 alias ldot='lsd -hld .*'
 
