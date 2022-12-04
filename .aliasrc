@@ -18,6 +18,27 @@ alias dud='du -d 1 -h'
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
 
+gdb-clear () {
+    rm -rf ~/.gdbinit
+}
+
+gdb-peda() {
+    gdb-clear
+    ln -s /home/martin/.gdb-configs/peda/pedainit /home/martin/.gdbinit
+    gdb "$@"
+}
+
+gdb-dash() {
+    gdb-clear
+    ln -s /home/martin/.gdb-configs/dashboard.py /home/martin/.gdbinit
+    gdb "$@"
+}
+
+gdb-gef() {
+    gdb-clear
+    ln -s /home/martin/.gdb-configs/gef.py /home/martin/.gdbinit
+    gdb "$@"
+}
 ngrep() {
 	sgrep "$*" /etc/nixos
 }
