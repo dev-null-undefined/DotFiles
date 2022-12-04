@@ -7,7 +7,8 @@ alias config-st='config status --untracked-files=no'
 alias config-c='config commit --untracked-files=no'
 alias config-a='config add'
 
-alias gpp='g++ --std=c++17 -Wall -pedantic -Wno-long-long -g -fno-omit-frame-pointer -Wunused-variable -Wtrigraphs -trigraphs'
+alias gppo='g++ --std=c++17 -Wall -pedantic -Wno-long-long -g -fno-omit-frame-pointer -Wunused-variable -Wtrigraphs -trigraphs -O0'
+alias gpp='g++ --std=c++17 -Wall -pedantic -Wno-long-long -g -fno-omit-frame-pointer -Wunused-variable -Wtrigraphs -trigraphs -O2'
 
 alias kill-window='xprop _NET_WM_PID | sed "s/.*=//g" | xargs kill -9'
 
