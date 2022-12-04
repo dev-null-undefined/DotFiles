@@ -77,6 +77,7 @@ Plug   'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colorscheme monokai
+let &t_ut='' " fixes weird background
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
