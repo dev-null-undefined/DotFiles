@@ -11,8 +11,10 @@ alias gpp='g++ --std=c++17 -Wall -pedantic -Wno-long-long -g -fno-omit-frame-poi
 
 alias kill-window='xprop _NET_WM_PID | sed "s/.*=//g" | xargs kill -9'
 
-alias nix-update="pushd /etc/nixos; sudo nix flake lock --update-input nixpkgs --update-input nixpkgs-stable --update-input nixpkgs-jetbrains --update-input nixpkgs-master --update-input nixpkgs-dev-null && sudo nixos-rebuild switch --flake '.#' && git add flake.lock; popd"
-alias nix-rebuild="pushd /etc/nixos; sudo nixos-rebuild switch --flake '.#'; popd"
+
+nix-find() {
+    nix eval /etc/nixos#nixosConfigurations.idk.pkgs."$1".outPath
+}
 
 alias dud='du -d 1 -h'
 alias grep='grep --color'
