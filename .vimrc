@@ -14,12 +14,19 @@ set smartcase
 set incsearch
 set smartindent
 
-nnoremap <C-Left> :tabprevious<CR>                                                                            
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <C-j> :tabprevious<CR>                                                                            
-nnoremap <C-k> :tabnext<CR> 
-nnoremap <C-t> :tabnew<CR> 
-nnoremap <C-w> :q<CR> 
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+nnoremap <C-Left> :bprevious<CR>                                                                            
+nnoremap <C-Right> :bnext<CR>
+nnoremap <C-j> :bprevious<CR>                                                                            
+nnoremap <C-k> :bnext<CR> 
+nnoremap <C-t> :enew<CR> 
+nnoremap <C-w> :bp <BAR> bd #<CR> 
+nnoremap <C-p> :Files<CR> 
 
 " Plugin config and stuff
 set nocompatible              " be iMproved, required
