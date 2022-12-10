@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-find . -type d -exec mkdir ~/{} \;
-find . -type f -exec cp ./{} ~/{} \;
+find . -type d -not -path '*/\.git/*' -exec mkdir ~/{} \;
+find . -type f -not -path '*/\.git/*' -exec cp ./{} ~/{} \;
 
