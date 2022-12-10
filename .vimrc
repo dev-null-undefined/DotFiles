@@ -2,6 +2,7 @@ syntax on
 
 set backspace=indent,eol,start
 autocmd FileType c,cpp setlocal equalprg=clang-format
+autocmd FileType nix setlocal equalprg=nixfmt
 
 set clipboard=unnamedplus
 set number relativenumber
