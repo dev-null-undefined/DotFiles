@@ -1,10 +1,11 @@
+#!/usr/bin/evn bash
 # vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PluginInstall +qall
 
 # zsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUNZSH=no sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/ptavares/zsh-z.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-z
@@ -20,3 +21,5 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # only if tmux is already running `tmux source ~/.tmux.conf`
 # tmux
 # prefix + I (capital i)
+
+zsh -l
