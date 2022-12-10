@@ -43,7 +43,7 @@ nix-rebuild-boot () {
 }
 
 nix-find() {
-    nix eval /etc/nixos#nixosConfigurations.$(hostname).pkgs."$1".outPath
+    nix eval "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1.outPath"
 }
 
 nix-path() {
@@ -51,7 +51,7 @@ nix-path() {
 }
 
 nix-pkg() {
-    nix shell /etc/nixos#nixosConfigurations.$(hostname).pkgs."$1"
+    nix shell "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1"
 }
 
 alias du='ncdu'
