@@ -49,7 +49,7 @@ plugins=(git zsh-autosuggestions nvm zsh-z
      	 emacs)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.aliasrc
+source ~/.aliasrc.sh
 
 # User configuration
 
