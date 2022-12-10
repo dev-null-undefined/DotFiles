@@ -87,3 +87,5 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 ssh-add -l | grep cvy7aO9eIJK1oj5dz+2VAfXB51gI8MdritXZh/WsCPs --color="never" &> /dev/null || ssh-add
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /home/martin/.config/broot/launcher/bash/br
