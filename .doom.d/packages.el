@@ -12,6 +12,8 @@
 (package! dired-single)
 (package! dired-open)
 (package! org-bullets)
+(package! rmsbolt)
+(package! eglot)
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)

@@ -97,3 +97,14 @@
         (id (one-or-more (not (any " "))))
         (message) line-end))
   :modes (text-mode markdown-mode gfm-mode org-mode))
+
+
+(use-package! nix-mode)
+(use-package! eglot
+  :config
+  ;; Ensure `nil` is in your PATH.
+  (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+  :hook
+  (nix-mode . eglot-ensure))
+
+
