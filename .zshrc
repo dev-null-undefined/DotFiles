@@ -1,6 +1,16 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+export GPG_TTY="$(tty)"
+gpg-connect-agent /bye
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+
+function ykman() {
+    local SCDAEMON_CONF="$HOME/.gnupg/scdaemon.conf"
+    [[ -e "$SCDAEMON_CONF" ]] && rm "$SCDAEMON_CONF" && pkill gpg-agent
+    command ykman $*
+    [[ ! -e "$SCDAEMON_CONF" ]] && echo "disable-ccid" > "$SCDAEMON_CONF" && pkill gpg-agent
+}
 
 # If using tramp emacs over ssh don't do anything
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
@@ -84,7 +94,7 @@ export NVM_DIR="$HOME/.nvm"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Add key to ssh-agent if not already in
-ssh-add -l | grep cvy7aO9eIJK1oj5dz+2VAfXB51gI8MdritXZh/WsCPs --color="never" &> /dev/null || ssh-add
+# ssh-add -l | grep cvy7aO9eIJK1oj5dz+2VAfXB51gI8MdritXZh/WsCPs --color="never" &> /dev/null || ssh-add
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
