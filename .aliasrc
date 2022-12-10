@@ -12,11 +12,41 @@ alias gpp='g++ --std=c++17 -Wall -pedantic -Wno-long-long -g -fno-omit-frame-poi
 
 alias kill-window='xprop _NET_WM_PID | sed "s/.*=//g" | xargs kill -9'
 
-alias nix-update="pushd /etc/nixos; sudo nix flake lock --update-input nixpkgs --update-input nixpkgs-stable --update-input nixpkgs-jetbrains --update-input nixpkgs-master --update-input nixpkgs-dev-null && sudo nixos-rebuild switch --flake '/etc/nixos#' && git add flake.lock; popd"
-alias nix-rebuild="sudo nixos-rebuild switch --flake '/etc/nixos#'"
+nix-update() {
+    pushd /etc/nixos
+    sudo nix flake lock \
+         --update-input nixpkgs \
+	 --update-input nixpkgs-stable \
+	 --update-input nixpkgs-master \
+	 --update-input nixpkgs-dev-null \
+	 --update-input nixos-hardware
+    if [ $? -eq 0 ]; then
+	sudo nixos-rebuild switch --flake '/etc/nixos#'
+    	if [ $? -eq 0 ]; then
+		git add flake.lock
+		popd
+	fi
+    fi
+}
+
+nix-rebuild() {
+    sudo nixos-rebuild switch --flake '/etc/nixos#'
+}
+
+nix-rebuild-boot () {
+    sudo nixos-rebuild boot --flake '/etc/nixos#'
+}
 
 nix-find() {
-    nix eval /etc/nixos#nixosConfigurations.idk.pkgs."$1".outPath
+    nix eval /etc/nixos#nixosConfigurations.$(hostname).pkgs."$1".outPath
+}
+
+nix-path() {
+    nix-find "$1"
+}
+
+nix-pkg() {
+    nix shell /etc/nixos#nixosConfigurations.$(hostname).pkgs."$1"
 }
 
 alias du='ncdu'
