@@ -51,7 +51,11 @@ nix-path() {
 }
 
 nix-pkg() {
-    nix shell "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1"
+    if [ $# -gt 1 ]; then
+	nix shell "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1" -c "${@:2}"
+    else
+	nix shell "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1" 
+    fi
 }
 
 alias du='ncdu'
