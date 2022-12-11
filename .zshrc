@@ -34,6 +34,9 @@ export PATH=$PATH:$HOME/.cargo/bin/:/usr/bin:$HOME/GitHub/nix-autobahn
 # Path to your oh-my-zsh installation.
 export ZSH="/home/martin/.oh-my-zsh"
 
+# change term to more cummon value support by SSH and tmux and other tools
+export TERM=xterm-256color
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
