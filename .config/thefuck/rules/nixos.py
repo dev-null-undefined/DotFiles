@@ -14,12 +14,12 @@ def match(command):
 
 def get_new_command(command):
     missing = regex.findall(command.output)[0]
-
+    # TODO: implement for more then 1 missing package
     commands = []
     result = subprocess.run(['command-not-found', missing], capture_output=True, text=True)
     nixshellpkgs = nixregex.findall(result.stderr)
     for nixpkg in nixshellpkgs:
-        commands.append(f'nix-pkg {nixpkg} {command.script}')
-        commands.append(f'nix-pkg master.{nixpkg} {command.script}')
-        commands.append(f'nix-pkg stable.{nixpkg} {command.script}')
+        commands.append(f'nix-pkg {nixpkg} -- {command.script}')
+        commands.append(f'nix-pkg master.{nixpkg} -- {command.script}')
+        commands.append(f'nix-pkg stable.{nixpkg} -- {command.script}')
     return commands
