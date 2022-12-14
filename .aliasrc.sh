@@ -51,10 +51,26 @@ nix-path() {
 }
 
 nix-pkg() {
-    if [ $# -gt 1 ]; then
-	nix shell "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1" -c "${@:2}"
+    pkgs=()
+    hostname=$(hostname)
+
+    while (($#))
+    do
+	pkg="$1"
+
+	shift
+	
+	if [[ "$pkg" == "--" ]]; then
+		break
+	fi
+
+	pkgs+=("/etc/nixos#nixosConfigurations.${hostname}.pkgs.${pkg}")
+    done
+
+    if [ $# -gt 0 ]; then
+	nix shell "${pkgs[@]}" -c "${@}"
     else
-	nix shell "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1" 
+	nix shell "${pkgs[@]}"
     fi
 }
 
