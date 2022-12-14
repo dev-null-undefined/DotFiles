@@ -15,12 +15,12 @@ cpu=$($HOME/.config/rofi/bin/usedcpu)
 memory=$($HOME/.config/rofi/bin/usedram)
 
 # Options
-shutdown=""
-reboot=""
-lock=""
-suspend=""
-arandr=""
-audio=" 墳"
+shutdown="🛑"
+reboot="🔄"
+lock="🔒"
+suspend="💤"
+arandr="🖥️"
+#audio=" 墳"
 
 
 # Confirmation
@@ -62,7 +62,7 @@ case $chosen in
         fi
         ;;
     $lock)
-		slock
+		i3lock
         ;;
     $suspend)
 		ans=$(confirm_exit &)
@@ -77,8 +77,8 @@ case $chosen in
 			msg
         fi
         ;;
-    $arandr$audio)
+    $arandr)
 		autorandr --change
-		/home/martin/GitHub/Martin/DotFiles/scripts/audio-devices 
+		#/home/martin/GitHub/Martin/DotFiles/scripts/audio-devices 
 	;;
 esac
