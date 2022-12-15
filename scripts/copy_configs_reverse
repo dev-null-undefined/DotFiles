@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-find . -type d -not -path '*/\.git/*' -exec mkdir ~/{} \;
-find . -type f -not -path '*/\.git/*' -exec cp ./{} ~/{} \;
-
+dotFiles=$(builtin cd $(dirname -- "$0")/..; pwd)
+find $dotFiles -type d -not -path '*/\.git/*' -exec bash -c 'mkdir ~/$(realpath --relative-to="'$dotFiles'" "{}")' \;
+find $dotFiles -type f -not -path '*/\.git/*' -exec bash -c 'cp "{}" ~/$(realpath --relative-to="'$dotFiles'" "{}")' \;

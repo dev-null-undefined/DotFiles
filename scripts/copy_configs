@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-
-find . -type f -not -path '*/\.git/*' -exec cp ~/{} ./{} \;
+dotFiles=$(builtin cd $(dirname -- "$0")/..; pwd)
+find $dotFiles -type f -not -path '*/\.git/*' -exec bash -c 'cp ~/$(realpath --relative-to="'$dotFiles'" "{}") "{}"' \;
