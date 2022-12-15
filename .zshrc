@@ -32,7 +32,7 @@ export FZF_BASE="$(fzf-share)"
 export PATH=$PATH:$HOME/.cargo/bin/:/usr/bin:$HOME/GitHub/nix-autobahn
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/martin/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 # change term to more cummon value support by SSH and tmux and other tools
 export TERM=xterm-256color
@@ -101,4 +101,4 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /home/martin/.config/broot/launcher/bash/br
+source /home/$USER/.config/broot/launcher/bash/br
