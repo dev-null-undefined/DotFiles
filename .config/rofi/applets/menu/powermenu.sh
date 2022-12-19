@@ -62,7 +62,7 @@ case $chosen in
         fi
         ;;
     $lock)
-		i3lock
+		~/scripts/i3lock-custom
         ;;
     $suspend)
 		ans=$(confirm_exit &)
@@ -70,7 +70,7 @@ case $chosen in
 		if [[ $ans == "Yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			mpc -q pause
 			amixer set Master mute
-			slock systemctl hibernate
+			~/scripts/i3lock-custom && systemctl hibernate
 		elif [[ $ans == "No" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else
