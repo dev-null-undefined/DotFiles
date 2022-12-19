@@ -29,7 +29,7 @@ setopt no_share_history
 export FZF_BASE="$(fzf-share)"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/.cargo/bin/:/usr/bin:$HOME/GitHub/nix-autobahn
+export PATH=$PATH:$HOME/.cargo/bin/
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
