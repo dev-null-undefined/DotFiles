@@ -4,7 +4,8 @@ copyq &
 pasystray &
 blueman-applet  &
 flameshot &
-feh --bg-fill ~/Images/background.* &
+feh --bg-fill ~/Pictures/background.* &
+setxkbmap -layout us,cz -option grp:alt_shift_toggle
 
 eval `ssh-agent`
 
