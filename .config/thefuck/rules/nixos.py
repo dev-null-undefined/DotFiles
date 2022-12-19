@@ -3,7 +3,7 @@ import subprocess
 
 enabled_by_default = True
 
-priority = 500
+priority = 100
 
 regex = re.compile(r'\s([^\s]+): command not found')
 nixregex = re.compile(r'nix-shell -p ([^\s]*)')
@@ -19,7 +19,10 @@ def get_new_command(command):
     result = subprocess.run(['command-not-found', missing], capture_output=True, text=True)
     nixshellpkgs = nixregex.findall(result.stderr)
     for nixpkg in nixshellpkgs:
-        commands.append(f'nix-pkg {nixpkg} -- {command.script}')
-        commands.append(f'nix-pkg master.{nixpkg} -- {command.script}')
-        commands.append(f'nix-pkg stable.{nixpkg} -- {command.script}')
+        commands.append(f'nix-pkg {nixpkg} -- "{command.script}"')
+        commands.append(f'nix-pkg {nixpkg}')
+        commands.append(f'nix-pkg master.{nixpkg} -- "{command.script}"')
+        commands.append(f'nix-pkg master.{nixpkg}')
+        commands.append(f'nix-pkg stable.{nixpkg} -- "{command.script}"')
+        commands.append(f'nix-pkg stable.{nixpkg}')
     return commands
