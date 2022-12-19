@@ -44,12 +44,11 @@ export TERM=xterm-256color
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-autosuggestions nvm zsh-z 
-    	 zsh-syntax-highlighting mvn sudo 
-	 docker docker-compose
-	 zsh-completions common-aliases 
-	 alias-tips fzf zsh-fzf-history-search
-	 nix-zsh-completions nix-shell
-     	 emacs)
+    zsh-syntax-highlighting mvn sudo 
+    docker docker-compose
+    zsh-completions common-aliases 
+    alias-tips fzf zsh-fzf-history-search
+    emacs)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliasrc.sh

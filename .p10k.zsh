@@ -91,7 +91,8 @@
     xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
     vim_shell               # vim shell indicator (:sh)
     midnight_commander      # midnight commander shell (https://midnight-commander.org/)
-    nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
+    #nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
+    nix_shell_pkgs
     # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
     # vpn_ip                # virtual private network indicator
     # load                  # CPU load
@@ -1655,6 +1656,17 @@
   # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
   # typeset -g POWERLEVEL9K_TIME_PREFIX='at '
+  
+
+  function prompt_nix_shell_pkgs() { 
+    pkgs="$(echo $PATH | tr ':' '\n' | grep '/nix/store' | grep -v 'imagemagick' | grep -v 'ncurses' | grep -v 'kitty' | sed 's#^/nix/store/[a-z0-9]\+-##' | sed 's#-[^-]\+$##' | sort | uniq | tr '\n' ' ' | xargs)"
+    #                                                     ^           kitty bundled path ignore those                 ^
+    if [ ! -z "$pkgs" ]; then
+      p10k segment -b 4 -f 0 -i "" -t "$pkgs"
+    fi
+  }
+
+
 
   # Example of a user-defined prompt segment. Function prompt_example will be called on every
   # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or
