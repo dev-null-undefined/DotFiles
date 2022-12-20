@@ -12,38 +12,42 @@ alias gpp='g++ --std=c++17 -Wall -pedantic -Wno-long-long -g -fno-omit-frame-poi
 
 alias kill-window='xprop _NET_WM_PID | sed "s/.*=//g" | xargs kill -9'
 
+export NIXOS_CONFIG_DIR="/etc/nixos"
+
+sudo-nom-rebuild-fallback() {
+    if ! command -v nom-rebuild &> /dev/null
+    then
+	sudo nixos-rebuild "$@"
+    else
+	sudo nom-rebuild "$@"
+    fi
+}
+
 
 btrfs-tree() {
     sudo btrfs subvol list / | cut -f9 -d' ' | sed -e 's/^/ROOT\//' | ~/scripts/paths2indent | ~/scripts/indent2tree
 }
 
 nix-update() {
-    pushd /etc/nixos
-    sudo nix flake lock \
-         --update-input nixpkgs \
-	 --update-input nixpkgs-stable \
-	 --update-input nixpkgs-master \
-	 --update-input nixpkgs-dev-null \
-	 --update-input nixos-hardware
+    sudo nix flake update "$NIXOS_CONFIG_DIR"
     if [ $? -eq 0 ]; then
-	sudo nixos-rebuild switch --flake '/etc/nixos#'
+	nix-rebuild
     	if [ $? -eq 0 ]; then
-		git add flake.lock
-		popd
+	    git --git-dir="${NIXOS_CONFIG_DIR}/.git" --work-tree="$NIXOS_CONFIG_DIR" add "${NIXOS_CONFIG_DIR}/flake.lock"
 	fi
     fi
 }
 
 nix-rebuild() {
-    sudo nixos-rebuild switch --flake '/etc/nixos#'
+    sudo-nom-rebuild-fallback switch --flake "${NIXOS_CONFIG_DIR}#"
 }
 
 nix-rebuild-boot () {
-    sudo nixos-rebuild boot --flake '/etc/nixos#'
+    sudo-nom-rebuild-fallback boot --flake "${NIXOS_CONFIG_DIR}#"
 }
 
 nix-find() {
-    nix eval "/etc/nixos#nixosConfigurations.$(hostname).pkgs.$1.outPath"
+    nix eval "${NIXOS_CONFIG_DIR}#nixosConfigurations.$(hostname).pkgs.$1.outPath"
 }
 
 nix-path() {
@@ -64,7 +68,7 @@ nix-pkg() {
 		break
 	fi
 
-	pkgs+=("/etc/nixos#nixosConfigurations.${hostname}.pkgs.${pkg}")
+	pkgs+=("${NIXOS_CONFIG_DIR}#nixosConfigurations.${hostname}.pkgs.${pkg}")
     done
 
     if [ $# -gt 0 ]; then
@@ -102,8 +106,9 @@ gdb-gef() {
     ln -s /home/martin/.gdb-configs/gef.py /home/martin/.gdbinit
     gdb "$@"
 }
+
 ngrep() {
-	sgrep "$*" /etc/nixos
+	sgrep "$*" "$NIXOS_CONFIG_DIR"
 }
 
 nvidia-offload() {
