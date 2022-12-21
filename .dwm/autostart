@@ -11,9 +11,11 @@ eval `ssh-agent`
 
 emacs --daemon &
 
+ulauncher --no-window-shadow --hide-window &
+
 (sleep 2 && systemctl --user restart dwm-status.service) &
 
-(sleep 1 && /home/martin/GitHub/Martin/DotFiles/scripts/audio-devices) &
+(sleep 1 && /home/$USER/scripts/audio-devices) &
 
 DWM_LOG="/tmp/dwm.log"
 DWM_LOG_OLD="$DWM_LOG.old"
