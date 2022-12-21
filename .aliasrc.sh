@@ -80,7 +80,6 @@ nix-pkg() {
 
 alias du='ncdu'
 alias df='duf'
-alias find='fd'
 alias ps='procs'
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
