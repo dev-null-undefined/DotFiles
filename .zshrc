@@ -21,7 +21,7 @@ if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
 fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 setopt no_share_history
@@ -43,12 +43,18 @@ export TERM=xterm-256color
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+
+# Auto update settings
+export UPDATE_ZSH_DAYS=1
+export ZSH_CUSTOM_AUTOUPDATE_QUIET=true
+
 plugins=(git zsh-autosuggestions nvm zsh-z 
     zsh-syntax-highlighting mvn sudo 
     docker docker-compose
     zsh-completions common-aliases 
     alias-tips fzf zsh-fzf-history-search
-    emacs)
+    emacs
+    autoupdate)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliasrc.sh
